@@ -1,7 +1,9 @@
 using ESO.Application;
 using ESO.Application.Interfaces;
 using ESO.Infrastructure.Identity;
+using ESO.Infrastructure.Identity.Contexts;
 using ESO.Infrastructure.Persistence;
+using ESO.Infrastructure.Persistence.Contexts;
 using ESO.Infrastructure.Shared;
 using ESO.WebApi.Extensions;
 using ESO.WebApi.Services;
@@ -33,7 +35,7 @@ namespace ESO.WebApi
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IdentityContext identityContext, ApplicationDbContext applicationDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -44,6 +46,11 @@ namespace ESO.WebApi
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            // add IdentityContext & ApplicationDbContext for codefirst (jigkoh3)
+            identityContext.Database.EnsureCreated();
+            applicationDbContext.Database.EnsureCreated();
+
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();

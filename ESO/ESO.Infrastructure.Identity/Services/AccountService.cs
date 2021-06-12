@@ -107,7 +107,13 @@ namespace ESO.Infrastructure.Identity.Services
                 }
                 else
                 {
-                    throw new ApiException($"{result.Errors}");
+                    // Fixed issue of ApiException support string message only, not support array of object (jigkoh3)
+                    string errors = "";
+                    foreach(var error in result.Errors)
+                    {
+                        errors += error.Description + " ";
+                    }
+                    throw new ApiException($"{errors}");
                 }
             }
             else
