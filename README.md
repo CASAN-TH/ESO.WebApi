@@ -1,7 +1,5 @@
 # ESO.WebApi - Clean Architecture
 
-## v1.1
-
 Follow these steps to get started with this Boiler Plate Template.
 
 ### You can also clone the Repository.
