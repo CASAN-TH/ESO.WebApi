@@ -61,7 +61,7 @@ Default Roles are as follows.
 
 Here are the credentials for the default users.
 - Email - superadmin@gmail.com  / Password - 123Pa$$word!
-- Email - basic@gmail.com  / Password - 123Pa$$word!
+- Email - basicuser@gmail.com  / Password - 123Pa$$word!
 
 You can use these default credentials to generate valid JWTokens at the ../api/account/authenticate endpoint.
 
