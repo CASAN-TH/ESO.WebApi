@@ -48,8 +48,8 @@ namespace ESO.WebApi
             }
 
             // add IdentityContext & ApplicationDbContext for codefirst (jigkoh3)
-            identityContext.Database.EnsureCreated();
-            applicationDbContext.Database.EnsureCreated();
+            //identityContext.Database.EnsureCreated();
+            //applicationDbContext.Database.EnsureCreated();
 
             app.UseHttpsRedirection();
             app.UseRouting();
